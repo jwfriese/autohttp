@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/fortytw2/autohttp/internal/httpsnoop"
 	"github.com/fortytw2/lounge"
+	"github.com/jwfriese/autohttp/internal/httpsnoop"
 )
 
 type embeddedAssets struct {
