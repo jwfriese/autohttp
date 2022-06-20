@@ -1,4 +1,4 @@
-module github.com/fortytw2/autohttp
+module github.com/jwfriese/autohttp
 
 go 1.17
 
