@@ -114,7 +114,7 @@ var validMethods = map[string]bool{
 	http.MethodPut:    true,
 }
 
-func (r *Router) Register(method string, path string, fn interface{}) error {
+func (r *Router) Register(method string, path string, fn interface{}, middlewares []Middleware) error {
 	if strings.Contains(path, "*") {
 		if httpHandler, ok := fn.(http.Handler); ok {
 			r.starRoutes[path] = httpHandler
@@ -141,7 +141,7 @@ func (r *Router) Register(method string, path string, fn interface{}) error {
 		return nil
 	}
 
-	h, err := NewHandler(r.log, r.defaultDecoder, r.defaultEncoder, []Middleware{}, r.defaultErrorHandler, fn)
+	h, err := NewHandler(r.log, r.defaultDecoder, r.defaultEncoder, middlewares, r.defaultErrorHandler, fn)
 	if err != nil {
 		return err
 	}
